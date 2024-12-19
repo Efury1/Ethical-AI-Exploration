@@ -67,51 +67,51 @@
       
       <h2>Intended Use</h2>
       <div class="linebreak-content">
-<br>-- ## Intended Use ##
+Intended Use:
 <br>-- Personalized Activity Recommendations: Suggesting activities aligned with user budgets and preferences, such as entertainment or wellness options.
 <br>-- Simplified Decision-Making: Streamlining budget-sensitive decisions by using AI to forecast spending capabilities based on user demographics.
 <br>-- Transparent Interaction: Allowing users to verify and adjust budget predictions to ensure accuracy and relevance.
-<br>-- 
-<br>-- ## Metrics and Performance Analysis Measures ##
+
+Metrics and Performance Analysis Measures
 <br>-- Confusion Matrices: Provided detailed insights into prediction accuracy, including True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN).
 <br>-- Balanced Accuracy: Calculated as the average of True Positive Rate (TPR) and True Negative Rate (TNR) to account for class imbalance.
-<br>-- ## Fairness Metrics: ##
+
+Metrics: 
 <br>-- Statistical Parity Difference: Evaluated the disparity between privileged and unprivileged groups.
 <br>-- Disparate Impact: Measured proportional fairness across different education levels.
 <br>-- Theil Index: Quantified inequality in predictions.
 <br>-- Interpretability with LIME: Identified key features driving predictions, such as education level and budget.
-<br>--
-<br>-- ## The model will interact with users through:##
+
+The model will interact with users through:
 <br>-- Budget Feedback Prompts: Allowing users to validate predictions and provide corrections if the forecasted budget appears inaccurate.
 <br>-- User Education: Informing users of model limitations and offering transparency about prediction drivers (e.g., education level, age group).
 <br>-- Dynamic Suggestions: Adapting recommendations based on real-time feedback, ensuring more relevant and inclusive activity proposals.
-<br>--
-<br>-- ## Incorporating Interpretability: ##
+
+Incorporating Interpretability:
 <br>-- Explanatory Mechanisms: Integrating LIME or similar tools to provide insights into the factors influencing predictions.
-<br>-- Feature Highlighting: Clearly showcasing how variables like education level, age, and activity preferences affect budget forecasts.
+<br>-- Feature Highlighting:  Clearly showcasing how variables like education level, age, and activity preferences affect budget forecasts.
 <br>-- Interactive Visualizations: Allowing users to explore feature importance and view comparative scenarios where they adjust inputs to see prediction changes.
 <br>-- Continuous Feedback Loops: Collecting user feedback to refine model assumptions and improve fairness.
 </div>
       
       <h2>Factors</h2>
       <div class="linebreak-content">
-<br>-- **Variable Data Types:**
+Variable Data Types:
 <br>-- The dataset includes both numerical (e.g., Budget (in dollars), Age) and categorical variables (e.g., Gender, Education_Level, Recommended_Activity).
 <br>-- After preprocessing, categorical variables like Age and Budget are binned into specific ranges (18-24, 25-44, etc., for age; <300 and >=300 for budget) and represented through one-hot encoding for model compatibility.
 <br>-- Missing values were handled by removing rows with missing data, ensuring a clean dataset for analysis.
 <br>-- 
-<br>-- **Target Variable:**
-<br>-- The target variable, Budget, is categorized into two classes:
-<br>-- <300 (unfavorable)
-<br>-- >=300 (favorable)
+Target Variable:
+<br>-- The target variable, Budget, is categorized into two classes: <300 (unfavorable) and >=300 (favorable)
 <br>-- This binary classification aligns with the objective of identifying user budget preferences for personalized recommendations.
-<br>-- 
-<br>-- **Features Used for Prediction:**
-<br>-- **Demographic Features:**
+ 
+Features Used for Prediction:
+Demographic Features:
 <br>-- Age: Binned into categories for simplicity and encoded for model training.
 <br>-- Gender: Includes diverse groups such as Male, Female, Non-binary, Transgender, and Other.
 <br>-- Education_Level: Ranges from High School Grad to Master’s Degree, reflecting user qualifications.
-<br>-- **Activity Features:**
+
+Activity Features:
 <br>-- Recommended_Activity: Categorized into options like "Stay in: Watch calming TV" and "Play: Visit a movie theater."
 <br>-- These features are critical for tailoring recommendations based on user demographics and preferences.
 </div>
