@@ -1,95 +1,222 @@
 
 <html>
   <head>
+    <style>
+      body {
+        background: linear-gradient(135deg, #f9d7e3 0%, #f2c6d8 100%);
+        font-family: 'Arial', sans-serif;
+        color: #4a4a4a;
+        margin: 0;
+        padding: 0;
+      }
+      h1, h2 {
+        font-family: 'Lucida Handwriting', 'Brush Script MT', cursive;
+        color: #ad2976;
+      }
+      h1 {
+        font-size: 2.5em;
+        margin-top: 30px;
+      }
+      h2 {
+        font-size: 1.8em;
+        margin-top: 20px;
+      }
+      .content {
+        width: 80%;
+        margin: 0 auto;
+        background: #ffffffcc;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      b {
+        color: #ad2976;
+      }
+      p, li {
+        line-height: 1.5em;
+        font-size: 1.1em;
+      }
+      a {
+        color: #ad2976;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      center {
+        text-align: center;
+      }
+      /* Convert the <br><br>-- to line breaks nicely */
+      .linebreak-content {
+        white-space: pre-line;
+      }
+    </style>
   </head>
   <body>
-  <center><h1>Model Card - IOOU AI Budget Predicter</h1></center>
-  <h2>Model Details</h2>
-  
-<br>-- Budget Predictor AI is a machine learning model designed to predict a user’s budget (in USD) based on demographic and categorical features such as age, gender, and education level.
-<br>-- The model utilizes Logistic Regression and Gaussian Naive Bayes classifiers for budget classification (above or below $300).
-<br>-- The model outputs binary labels: favorable (budget >= $300) and unfavorable (budget < $300), as required for the use case.
-<br>-- Fairness analysis identifies biases in predicting budgets, particularly favoring users with higher educational credentials (Bachelor's/Master’s Degrees) over high school graduates.
-<br>-- Key performance metrics include accuracy, balanced accuracy, and fairness metrics such as Statistical Parity Difference and Disparate Impact.
-
-  <h2>Intended Use</h2>
-  
-<br>-- The model is intended for use in the IDOOU application to enhance user experience by recommending budget-aligned activities.
-<br>-- Interpretability: Results will be presented to users with explanations and options to provide feedback to ensure transparency and understanding.
-<br>-- Privacy: User data (e.g., age, gender, education level) will be processed securely with encryption and anonymization to maintain privacy.
-<br>-- Fairness: The app will notify users of potential model limitations and biases, prompting users to verify results and provide corrections for budget misclassification.
-<br>-- The app can use fairness-aware model updates (like debiasing) in future releases to address biases identified during evaluation.
-
-  <h2>Factors</h2>
-  
-<br>-- Representational Bias: The dataset shows a higher representation of privileged educational groups (Bachelor’s/Master’s Degrees), which may cause unfair model outcomes.
-<br>-- Data Imbalance: Certain demographics, such as “High School Graduates,” are underrepresented, contributing to model bias.
-<br>-- Model Thresholds: Threshold tuning impacts the balance between accuracy and fairness, as reflected in metrics such as balanced accuracy and equal opportunity difference.
-<br>-- Fairness Trade-offs: Addressing fairness may slightly reduce accuracy but lead to better equity across groups.
-
-  <h2>Metrics</h2>
-  
-<br>-- Accuracy: Measures the overall percentage of correctly predicted budgets.
-<br>-- Balanced Accuracy: Averages true positive and true negative rates to account for class imbalance.
-<br>-- Fairness Metrics: Includes Statistical Parity Difference (-0.98) and Disparate Impact (0.0127), indicating bias favoring privileged education groups.
-<br>-- Average Odds Difference and Equal Opportunity Difference provide additional fairness assessments across protected and unprotected groups.
-<br>-- Theil Index: Measures inequality in predictions to reflect deviations from expected fairness.
-
-  <h2> Training Data </h2>
-  
-<br>-- The training dataset consists of ~300,000 participants' demographic and activity data, including features such as gender, age, education level, and budget.
-<br>-- Missing values and duplicates were removed, and features like Age and Budget were categorized using defined bins (e.g., Age: 18-24, 25-44, Budget: <300, >=300).
-<br>-- The dataset was one-hot encoded for categorical variables, with columns such as Education_Level and Budget transformed for modeling.
-
-  <h2> Evaluation Data </h2>
-  
+    <div class="content">
+      <center><h1>Model Card - IOOU AI Budget Predicter</h1></center>
+      <h2>Model Details</h2>
+      <div class="linebreak-content">
+<br>-- The Budget Predictor AI is designed to classify users' budget preferences for activities, distinguishing between budgets of < $300 and >= $300.
+<br>-- Two classifiers were evaluated: Logistic Regression and Gaussian Naive Bayes, with emphasis on balancing accuracy and fairness.
+<br>-- Key features include age, gender, and education level, among others. Preprocessing involved binning numeric features, handling missing values, and applying one-hot encoding for categorical variables.
+<br>-- Performance metrics focus on fairness (Statistical Parity Difference, Disparate Impact), interpretability (LIME), and accuracy (balanced accuracy, confusion matrix).
+</div>
+      
+      <h2>Intended Use</h2>
+      <div class="linebreak-content">
+<br>-- ## Intended Use ##
+<br>-- Personalized Activity Recommendations: Suggesting activities aligned with user budgets and preferences, such as entertainment or wellness options.
+<br>-- Simplified Decision-Making: Streamlining budget-sensitive decisions by using AI to forecast spending capabilities based on user demographics.
+<br>-- Transparent Interaction: Allowing users to verify and adjust budget predictions to ensure accuracy and relevance.
+<br>-- 
+<br>-- ## Metrics and Performance Analysis Measures ##
+<br>-- Confusion Matrices: Provided detailed insights into prediction accuracy, including True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN).
+<br>-- Balanced Accuracy: Calculated as the average of True Positive Rate (TPR) and True Negative Rate (TNR) to account for class imbalance.
+<br>-- ## Fairness Metrics: ##
+<br>-- Statistical Parity Difference: Evaluated the disparity between privileged and unprivileged groups.
+<br>-- Disparate Impact: Measured proportional fairness across different education levels.
+<br>-- Theil Index: Quantified inequality in predictions.
+<br>-- Interpretability with LIME: Identified key features driving predictions, such as education level and budget.
+<br>--
+<br>-- ## The model will interact with users through:##
+<br>-- Budget Feedback Prompts: Allowing users to validate predictions and provide corrections if the forecasted budget appears inaccurate.
+<br>-- User Education: Informing users of model limitations and offering transparency about prediction drivers (e.g., education level, age group).
+<br>-- Dynamic Suggestions: Adapting recommendations based on real-time feedback, ensuring more relevant and inclusive activity proposals.
+<br>--
+<br>-- ## Incorporating Interpretability: ##
+<br>-- Explanatory Mechanisms: Integrating LIME or similar tools to provide insights into the factors influencing predictions.
+<br>-- Feature Highlighting: Clearly showcasing how variables like education level, age, and activity preferences affect budget forecasts.
+<br>-- Interactive Visualizations: Allowing users to explore feature importance and view comparative scenarios where they adjust inputs to see prediction changes.
+<br>-- Continuous Feedback Loops: Collecting user feedback to refine model assumptions and improve fairness.
+</div>
+      
+      <h2>Factors</h2>
+      <div class="linebreak-content">
+<br>-- **Variable Data Types:**
+<br>-- The dataset includes both numerical (e.g., Budget (in dollars), Age) and categorical variables (e.g., Gender, Education_Level, Recommended_Activity).
+<br>-- After preprocessing, categorical variables like Age and Budget are binned into specific ranges (18-24, 25-44, etc., for age; <300 and >=300 for budget) and represented through one-hot encoding for model compatibility.
+<br>-- Missing values were handled by removing rows with missing data, ensuring a clean dataset for analysis.
+<br>-- 
+<br>-- **Target Variable:**
+<br>-- The target variable, Budget, is categorized into two classes:
+<br>-- <300 (unfavorable)
+<br>-- >=300 (favorable)
+<br>-- This binary classification aligns with the objective of identifying user budget preferences for personalized recommendations.
+<br>-- 
+<br>-- **Features Used for Prediction:**
+<br>-- **Demographic Features:**
+<br>-- Age: Binned into categories for simplicity and encoded for model training.
+<br>-- Gender: Includes diverse groups such as Male, Female, Non-binary, Transgender, and Other.
+<br>-- Education_Level: Ranges from High School Grad to Master’s Degree, reflecting user qualifications.
+<br>-- **Activity Features:**
+<br>-- Recommended_Activity: Categorized into options like "Stay in: Watch calming TV" and "Play: Visit a movie theater."
+<br>-- These features are critical for tailoring recommendations based on user demographics and preferences.
+</div>
+      
+      <h2>Metrics</h2>
+      <div class="linebreak-content">
+<br>-- Accuracy: Logistic Regression and Gaussian Naive Bayes were evaluated for their ability to classify user budgets accurately. Logistic Regression outperformed Gaussian Naive Bayes, achieving a balanced accuracy of 99.66%, compared to 99.37% for GNB.
+<br>-- Balanced Accuracy: By averaging true positive and true negative rates, balanced accuracy accounted for potential class imbalances. Logistic Regression demonstrated better flexibility with an optimal threshold of 0.29, compared to GNB's 0.01.
+<br>-- Confusion Matrix Analysis: Logistic Regression showed superior precision and recall, with only 3 false positives and 42 false negatives. In contrast, Gaussian Naive Bayes had 26 false positives and 39 false negatives, indicating slightly lower precision but comparable recall.
+<br>-- Statistical Parity Difference: Both models exhibited fairness issues, with Logistic Regression scoring -0.9915 and GNB scoring -0.9850. These negative values indicate disparities in the likelihood of positive outcomes for unprivileged groups
+<br>-- Average Odds Difference: Logistic Regression (-0.5156) and GNB (-0.4808) showed unequal treatment in true positive and false negative rates across demographic groups, signaling a need for fairness adjustments.
+<br>-- Equal Opportunity Difference: This metric highlighted disparities in true positive rates between privileged and unprivileged groups. Logistic Regression had a score of -1.0000, slightly worse than GNB’s -0.9362.
+<br>-- Theil Index: Both models had low Theil Index values (Logistic Regression: 0.0045, GNB: 0.0050), reflecting minimal prediction inequality despite other fairness concerns.
+<br>-- Fairness vs. Accuracy: While both models achieved high accuracy, fairness metrics revealed biases against unprivileged groups. These findings suggest the need for post-processing techniques like Reject Option Classification to mitigate these disparities.
+<br>-- Recommendation: Logistic Regression is the preferred model due to its higher accuracy and more adaptable threshold tuning. However, fairness adjustments are necessary to ensure equitable outcomes for all user groups.
+</div>
+      
+      <h2> Training Data </h2>
+      <div class="linebreak-content">
+<br>-- Training Set: 50% of the total dataset, containing a balanced representation of classes (0 and 1) for robust model training.
+<br>-- Validation Set: 30% of the dataset, used for fine-tuning model hyperparameters and threshold optimization.
+<br>-- Testing Set: 20% of the dataset, reserved for evaluating final model performance and generalization capabilities.
+</div>
+      
+      <h2> Evaluation Data </h2>
+      <div class="linebreak-content">
 <br>-- The evaluation dataset was split into training (50%), validation (30%), and test (20%) sets.
 <br>-- Fairness analysis was performed using the AIF360 toolkit to evaluate bias against unprivileged groups (e.g., High School Graduates).
 <br>-- Gaussian Naive Bayes and Logistic Regression models were evaluated using accuracy metrics and fairness metrics (Statistical Parity Difference, Disparate Impact).
 <br>-- The test dataset included balanced representation for both favorable and unfavorable budget labels.
-
-  <h2>Quantitative Analysis</h2>
-  
+</div>
+      
+      <h2>Quantitative Analysis</h2>
+      <div class="linebreak-content">
 <br>-- The Gaussian Naive Bayes model achieved a near-perfect balanced accuracy score of 1.0, but fairness metrics revealed significant bias, with a Statistical Parity Difference of -0.98 and a Disparate Impact of 0.0127, favoring privileged education groups.
 <br>-- The Logistic Regression model achieved a balanced accuracy of 0.9363 after threshold tuning, with reduced but still notable bias. Statistical Parity Difference improved to -0.8694, and Disparate Impact was closer to fairness thresholds but not fully corrected.
 <br>-- After applying the Reject Option Classification bias mitigation strategy, fairness metrics improved substantially. Statistical Parity Difference was reduced to approximately 0.0111, and Disparate Impact approached acceptable ranges, though some variability remained.
 <br>-- Key insights showed that education level and age group were the most influential features, reflecting underlying dataset imbalances. Mitigation efforts addressed these disparities effectively while maintaining model performance for predictive accuracy.
-
-  
-  <br/><br/><b>Results of the AI model after applying the bias mitigation strategy</b><br/>
-  
-  <center>
-  
+</div>
+      
+      <br/><br/><b>Results of the AI model after applying the bias mitigation strategy</b><br/>
+      
+      <center>
+      
   <img src="Lime_Feature.png" alt="LIME Feature Importance" width="600"><br/>
   <img src="Reject_Option_Classification.png" alt="Bias Mitigation Results" width="600"><br/>
   <img src="Cohort_Analysis.png" alt="Cohort Analysis Plot" width="600"><br/>
 
-  </center>
+      </center>
 
-  <h2>Ethical Considerations</h2>
-  
-<br>-- The dataset used in this project highlights biases stemming from an uneven representation of education levels and genders. Users with higher education credentials, such as Bachelor's or Master's degrees, are overrepresented compared to high school graduates, leading to skewed model predictions that favor privileged groups.
-<br>-- The fairness analysis identified a significant disparity where the model benefited the privileged group. Statistical Parity Difference was approximately -0.98 pre-mitigation, highlighting potential unfair treatment of unprivileged groups.
-<br>-- To mitigate this, the Reject Option Classification strategy was applied, which improved fairness metrics, reducing Statistical Parity Difference to near zero.
-<br>-- Interpretability studies before and after bias mitigation using LIME revealed that education level, age groups, and certain activities contributed significantly to the predictions. The mitigation efforts reduced bias without severely impacting performance.
+      <h2>Ethical Considerations</h2>
+      <div class="linebreak-content">
+<br>-- Human-in-the-Loop: 
+<br>-- Introducing a human-in-the-loop system for the application would assist in ensuring transparency and accountability.
+<br>-- Idealy the application would allow users to challenge or validate the applciations predictions, meaning not allow could the model improve but the user would feel empowered.
+<br>-- However, it's important to not have over-reliance on a feature like this, as if users constantly need correct predictions, it would negatively impact user experience. 
+<br>-- This would be ideal for users that the model fails to address like high school drop outs and other education levels. However, the model would need to be aware of the HITL process as if the model disproportionately relies on privileged users for feedback (Users with higher educaiton), then it could reinforce existing biases. 
+<br>--
+<br>-- Limitations and bias present: 
+<br>-- The dropping of data like Education_Other and High_School_Graduate Drop Out introduced bias into the model, as it didn't account for all education levels.
+<br>-- 
+<br>--
+<br>-- Failures of ML model: 
+<br>-- Whilst the Logistic Regression edges out the Gaussian Naive Bayes model in terms of metric, its fairness metrics indicate critical areas of bias mitigation.
+<br>--
+<br>-- 
+<br>-- Risk Mitigation: 
+<br>-- Diversity and Inclusion: Attract and hire diverse teams ensuring that the development and analysis of the IDOOU recommender system is inclusive and representative of all users. This is beneficial as varied backgrouds are more likely to anticipate cultural or societal impacts of recommendations. 
+<br>-- Ethical Forums: Establish cross-functional ethical forum to dicuss and mitigate potential biases, ensuring recommendations align with societal and user expectations.
+<br>--
+<br>-- Potential Harm: 
+<br>-- Quality of Service: The model has quality of service harm as the AI System doesn't perform equivalently among users, as we have removed important rows in Education_Level like Education_Other and High_School_Graduate Drop Out. 
+<br>-- Label Bias: There's potential label bias as the model budget is only representing two buckets which is Budget_<=300 and Budget_>300. This doesn't provide a clear picture of peoples budget, leading to potential biased predictions.
+<br>-- For example: Recommendations could misclassify a user's budget because it doesn't have enough information, leading to inappropriate activity suggestions.
+<br>-- It must include key contributing factors before and after bia mitigation: 
+</div>
+      
+      <h2>Caveats and Recommendations</h2>
+      <div class="linebreak-content">
+<br>-- Lack of Inclusiveness in the Dataset:
+<br>-- Gender distribution is imbalanced, with overrepresentation of "Female" participants.
+<br>-- Age distribution skews towards younger demographics (18-44).
+<br>-- Educational levels show higher representation of individuals with Bachelor’s and Master’s degrees, potentially privileging these groups.
+<br>--
+<br>-- Predisposition of the Model to False Positives/Negatives:
+<br>-- Logistic Regression and Gaussian Naive Bayes models demonstrate fairness issues:
+<br>-- Metrics such as Statistical Parity Difference and Equal Opportunity Difference indicate bias, particularly in favor of individuals with higher education levels.
+<br>-- Imbalance in false positives and negatives reflects underrepresentation and potential disadvantaging of certain groups.
+<br>-- 
+<br>-- Further Ethical AI Analyses:
+<br>-- In future it would be good to explore interactions between sensitive attributes (e.g., gender and education level) and outcomes to identify and mitigate intersectional biases.
 
-  <h2>Caveats and Recommendations</h2>
-  
-<br>-- The synthetic nature of the dataset limits its ability to fully reflect real-world user behaviors and preferences.
-<br>-- Some demographic groups, such as individuals identifying as "Other" or "Non-binary," may still face underrepresentation, which could impact fairness and accuracy.
-<br>-- Bias mitigation strategies, while effective, may slightly reduce model performance, requiring careful evaluation before deployment.
-<br>-- Further ethical AI analyses I would apply beyond this project:
-   - Use real-world feedback to evaluate the model's impact on diverse user groups over time.
-   - Incorporate fairness-aware pre-processing techniques to improve fairness upstream in the data pipeline.
-
-  <h2>Business Consequences</h2>
-  
+</div>
+      
+      <h2>Business Consequences</h2>
+      <div class="linebreak-content">
 <br>-- Positive Impact:
-   - The model enhances user satisfaction by providing personalized budget recommendations, improving user engagement and retention.
-   - Hotels, autonomous vehicles, and tourism sectors benefit from improved activity recommendations, driving economic activity in local areas.
-<br>-- Negative Impact:
-   - Bias in the predictions could alienate underrepresented groups, damaging the brand's reputation and trust among users.
-   - Failure to address fairness issues might lead to legal or ethical repercussions if users identify systematic discrimination.
+   - Enhanced Personalization: The budget predictor improves user experience by suggesting activities tailored to individual financial capacity, making it a valuable addition for the app’s personalization feature.
+   - Broader Application: Hotels and autonomous vehicle dashboards can leverage this tool, increasing integration opportunities for the app across industries.
 
+<br>-- Negative Impact:
+   - Overrepresentation of individuals with bachelor's and master's degrees may alienate users with lower educational levels, leading to perceptions of unfairness.
+   - Gender and age biases in recommendations can cause users to question the app's inclusivity.
+   - Perceptions of bias and inaccuracy can harm the organization’s reputation, reducing brand loyalty and user base.
+</div>
+    </div>
   </body>
 </html>
