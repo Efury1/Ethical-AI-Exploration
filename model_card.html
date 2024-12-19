@@ -52,6 +52,21 @@
       .linebreak-content {
         white-space: pre-line;
       }
+      .image-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      .image-caption {
+        font-size: 1.1em;
+        color: #4a4a4a;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
@@ -169,19 +184,17 @@ Activity Features:
 <br>-- Idealy the application would allow users to challenge or validate the applciations predictions, meaning not allow could the model improve but the user would feel empowered.
 <br>-- However, it's important to not have over-reliance on a feature like this, as if users constantly need correct predictions, it would negatively impact user experience. 
 <br>-- This would be ideal for users that the model fails to address like high school drop outs and other education levels. However, the model would need to be aware of the HITL process as if the model disproportionately relies on privileged users for feedback (Users with higher educaiton), then it could reinforce existing biases. 
-<br>--
+
 <br>-- Limitations and bias present: 
 <br>-- The dropping of data like Education_Other and High_School_Graduate Drop Out introduced bias into the model, as it didn't account for all education levels.
-<br>-- 
-<br>--
+
 <br>-- Failures of ML model: 
 <br>-- Whilst the Logistic Regression edges out the Gaussian Naive Bayes model in terms of metric, its fairness metrics indicate critical areas of bias mitigation.
-<br>--
-<br>-- 
+
 <br>-- Risk Mitigation: 
 <br>-- Diversity and Inclusion: Attract and hire diverse teams ensuring that the development and analysis of the IDOOU recommender system is inclusive and representative of all users. This is beneficial as varied backgrouds are more likely to anticipate cultural or societal impacts of recommendations. 
 <br>-- Ethical Forums: Establish cross-functional ethical forum to dicuss and mitigate potential biases, ensuring recommendations align with societal and user expectations.
-<br>--
+
 <br>-- Potential Harm: 
 <br>-- Quality of Service: The model has quality of service harm as the AI System doesn't perform equivalently among users, as we have removed important rows in Education_Level like Education_Other and High_School_Graduate Drop Out. 
 <br>-- Label Bias: There's potential label bias as the model budget is only representing two buckets which is Budget_<=300 and Budget_>300. This doesn't provide a clear picture of peoples budget, leading to potential biased predictions.
@@ -195,12 +208,12 @@ Activity Features:
 <br>-- Gender distribution is imbalanced, with overrepresentation of "Female" participants.
 <br>-- Age distribution skews towards younger demographics (18-44).
 <br>-- Educational levels show higher representation of individuals with Bachelor’s and Master’s degrees, potentially privileging these groups.
-<br>--
+
 <br>-- Predisposition of the Model to False Positives/Negatives:
 <br>-- Logistic Regression and Gaussian Naive Bayes models demonstrate fairness issues:
 <br>-- Metrics such as Statistical Parity Difference and Equal Opportunity Difference indicate bias, particularly in favor of individuals with higher education levels.
 <br>-- Imbalance in false positives and negatives reflects underrepresentation and potential disadvantaging of certain groups.
-<br>-- 
+
 <br>-- Further Ethical AI Analyses:
 <br>-- In future it would be good to explore interactions between sensitive attributes (e.g., gender and education level) and outcomes to identify and mitigate intersectional biases.
 
@@ -217,6 +230,12 @@ Activity Features:
    - Gender and age biases in recommendations can cause users to question the app's inclusivity.
    - Perceptions of bias and inaccuracy can harm the organization’s reputation, reducing brand loyalty and user base.
 </div>
+      
+      <div class="image-container">
+        <h2>AI Workflow Diagram</h2>
+        <p class="image-caption">A detailed workflow diagram showcasing the processes and steps in the AI system.</p>
+        <img src="AI_Workflow.png" alt="AI Workflow Diagram">
+      </div>
     </div>
   </body>
 </html>
