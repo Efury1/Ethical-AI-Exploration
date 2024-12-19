@@ -7510,7 +7510,7 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b0dfb027">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=120f2757">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -47364,12 +47364,12 @@ c:\Users\ejfur\AppData\Local\Programs\Python\Python313\Lib\site-packages\lime\li
 <div class="jp-InputPrompt jp-InputArea-prompt">In [523]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Import pandas for data manipulation</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Import matplotlib for plotting</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Import numpy for numerical operations</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>  <span class="c1"># Import train_test_split for splitting data</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>  <span class="c1"># Import Gaussian Naive Bayes model</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>  <span class="c1"># Import accuracy_score for evaluating model performance</span>
 
 <span class="c1"># Load the processed data</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"encoded_balanced_education_data.csv"</span><span class="p">)</span>
@@ -47387,43 +47387,43 @@ c:\Users\ejfur\AppData\Local\Programs\Python\Python313\Lib\site-packages\lime\li
 
 <span class="c1"># Stratify the dataset by Privileged Education</span>
 <span class="n">education_levels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Privileged_Education"</span><span class="p">]</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Budget_Label"</span><span class="p">,</span> <span class="s2">"Privileged_Education"</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Budget_Label"</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Budget_Label"</span><span class="p">,</span> <span class="s2">"Privileged_Education"</span><span class="p">])</span>  <span class="c1"># Define features excluding target and privileged columns</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Budget_Label"</span><span class="p">]</span>  <span class="c1"># Define target variable</span>
 
 <span class="c1"># Train-Test Split stratified by Privileged Education</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">edu_train</span><span class="p">,</span> <span class="n">edu_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">education_levels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">education_levels</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
 <span class="p">)</span>
 
-<span class="c1"># Train Gaussian Naive Bayes</span>
+<span class="c1"># Train Gaussian Naive Bayes model</span>
 <span class="n">gnb_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">gnb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Predictions and accuracy stratified by Privileged Education</span>
-<span class="n">edu_test_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edu_test</span><span class="p">)</span>
-<span class="n">performance_by_education</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">edu_test_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edu_test</span><span class="p">)</span>  <span class="c1"># Get unique education levels in the test set</span>
+<span class="n">performance_by_education</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize dictionary to store performance by education level</span>
 
 <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">edu_test_unique</span><span class="p">:</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">edu_test</span><span class="p">[</span><span class="n">edu_test</span> <span class="o">==</span> <span class="n">level</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
-    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">performance_by_education</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">edu_test</span><span class="p">[</span><span class="n">edu_test</span> <span class="o">==</span> <span class="n">level</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># Get indices of the current education level</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">gnb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>  <span class="c1"># Predict using the model for the current education level</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">)</span>  <span class="c1"># Calculate accuracy for the current education level</span>
+    <span class="n">performance_by_education</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="n">acc</span>  <span class="c1"># Store the accuracy in the dictionary</span>
 
 <span class="c1"># Create a cohort analysis plot</span>
-<span class="n">education_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Not Privileged"</span><span class="p">,</span> <span class="s2">"Privileged"</span><span class="p">]</span>
+<span class="n">education_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Not Privileged"</span><span class="p">,</span> <span class="s2">"Privileged"</span><span class="p">]</span>  <span class="c1"># Define labels for the x-axis</span>
 <span class="n">accuracies</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">performance_by_education</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>  <span class="c1"># Default to 0 if no data for Not Privileged</span>
     <span class="n">performance_by_education</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Default to 0 if no data for Privileged</span>
 <span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">education_labels</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">"skyblue"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Cohort Analysis: Model Performance by Education Level"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Education Level"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Accuracy"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Set the figure size for the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">education_labels</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">"skyblue"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">])</span>  <span class="c1"># Create a bar plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Cohort Analysis: Model Performance by Education Level"</span><span class="p">)</span>  <span class="c1"># Set the title of the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Education Level"</span><span class="p">)</span>  <span class="c1"># Set the x-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Accuracy"</span><span class="p">)</span>  <span class="c1"># Set the y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># Add gridlines to the y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Display the plot</span>
 </pre></div>
 </div>
 </div>
@@ -47794,7 +47794,26 @@ c:\Users\ejfur\AppData\Local\Programs\Python\Python313\Lib\site-packages\lime\li
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=789095e5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3a0e6ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Refererences
+These references reflect the sources that contributed to the conclusions outlined above. Some citations may be limited as referencing requirements were not initially anticipated.</p>
+<p>Tatarets, Y., &amp; Tatarets, Y. (2024, March 21). The role of Human-in-the-Loop: Navigating the landscape of AI Systems | Humans in the Loop. Humans in the Loop | Continuously Better Models Using a Human-in-the-loop. <a href="https://humansintheloop.org/the-role-of-human-in-the-loop-navigating-the-landscape-of-ai-systems">https://humansintheloop.org/the-role-of-human-in-the-loop-navigating-the-landscape-of-ai-systems</a></p>
+<p>Bias and ethical concerns in machine learning. (n.d.). ISACA. <a href="https://www.isaca.org/resources/isaca-journal/issues/2022/volume-4/bias-and-ethical-concerns-in-machine-learning">https://www.isaca.org/resources/isaca-journal/issues/2022/volume-4/bias-and-ethical-concerns-in-machine-learning</a></p>
+<p>GeeksforGeeks. (2023, December 21). Bias and ethical concerns in machine learning. GeeksforGeeks. <a href="https://www.geeksforgeeks.org/bias-and-ethical-concerns-in-machine-learning/">https://www.geeksforgeeks.org/bias-and-ethical-concerns-in-machine-learning/</a></p>
+<p>Bias and ethical concerns in machine learning. (n.d.). ISACA. <a href="https://www.isaca.org/resources/isaca-journal/issues/2022/volume-4/bias-and-ethical-concerns-in-machine-learning">https://www.isaca.org/resources/isaca-journal/issues/2022/volume-4/bias-and-ethical-concerns-in-machine-learning</a></p>
+<p>Chugani, V. (2024, November 5). One hot encoding: understanding the “Hot” in data. MachineLearningMastery.com. <a href="https://machinelearningmastery.com/one-hot-encoding-understanding-the-hot-in-data">https://machinelearningmastery.com/one-hot-encoding-understanding-the-hot-in-data</a></p>
+<p>pandas.cut — pandas 2.2.3 documentation. (n.d.). <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html</a></p>
+<p>ConfusionMatrixDisplay. (n.d.). Scikit-learn. <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html?utm_source=chatgpt.com">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.ConfusionMatrixDisplay.html?utm_source=chatgpt.com</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e473e4c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
