@@ -1,135 +1,113 @@
-# README: AI Ethics for Personalized Budget Prediction
 
-## Project Overview
-This project focuses on building an AI-based personalized budget prediction system for the IDOOU app. The app provides activity recommendations to users based on their budget, demographics, and educational background while addressing fairness, ethical AI considerations, and performance. The system identifies biases, mitigates them, and ensures equitable decision-making.
+
+# AI Ethics Project: IDOOU Activity Recommender
+
+## Overview
+
+This project involves designing a machine learning model to predict user budgets for the IDOOU app, a personalized activity recommendation platform. The app aims to simplify the process of finding activities by considering user preferences, weather conditions, and budgets.
+
+The project emphasizes fairness and ethical AI practices by exploring biases in demographic attributes like gender, age, and education level. Using tools like the IBM AIF360 library, fairness metrics are evaluated to address potential biases in the model's predictions.
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/z197Kxx"  ><a href="//imgur.com/a/z197Kxx"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+---
+
+## Features
+
+- **Personalized Recommendations**: Predicts user budgets to offer tailored activity suggestions.
+- **Fairness Analysis**: Incorporates fairness metrics (e.g., statistical parity, disparate impact) to ensure ethical AI practices.
+- **Extensive Data Preprocessing**: Handles missing values, duplicate data, and categorization of key variables like age and budget.
+- **Machine Learning Models**:
+  - Logistic Regression
+  - Gaussian Naive Bayes
+- **Visualization**: Comprehensive visualizations for data exploration, fairness metrics, and model evaluation.
 
 ---
 
-## Project Objectives
-- **Build Predictive Models:** Train and evaluate models such as Decision Trees, Logistic Regression, and Naive Bayes for budget prediction.
-- **Analyze Bias and Fairness:** Use fairness metrics such as Statistical Parity Difference and Disparate Impact to detect and mitigate biases.
-- **Ethical AI Considerations:** Ensure ethical AI implementation by documenting human-in-the-loop mechanisms, model limitations, and potential harms.
-- **Provide Insights:** Develop visualizations like confusion matrices, performance cohort analysis, and feature importance plots to interpret and explain the models.
+## Project Structure
+
+- **Data Preprocessing**: Cleaning and categorizing the dataset, handling imbalances, and encoding categorical variables.
+- **Model Training**:
+  - Two models are trained using a train-test-validation split.
+  - Metrics such as balanced accuracy and confusion matrices are used for evaluation.
+- **Fairness Analysis**: Using IBM AIF360 toolkit to evaluate biases.
+- **Interpretability**: Implementing tools like LIME to understand model predictions.
+
+---
+
+## Dataset
+
+- **Source**: A synthetic dataset based on user experience studies with ~300,000 participants.
+- **Attributes**:
+  - Demographic: Age, Gender, Education Level
+  - Activity: Recommended Activity, Budget
+- **Preprocessing Steps**:
+  - Removal of missing values and duplicates.
+  - Categorization and binning of age and budget attributes.
+  - One-hot encoding for categorical variables.
 
 ---
 
 ## Installation
 
-### Required Libraries
-Install the following dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Additional Python Imports
-```python
-import pandas as pd
-import numpy as np
-import seaborn as sns
-from aif360.datasets import StandardDataset, BinaryLabelDataset
-from aif360.metrics import ClassificationMetric, BinaryLabelDatasetMetric
-from sklearn.tree import DecisionTreeClassifier
-from aif360.algorithms.postprocessing import RejectOptionClassification
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import make_pipeline
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
-import joblib
-import matplotlib.pyplot as plt
-from collections import defaultdict
-```
+1. Clone this repository:
+   ```
+   git clone <repository_url>
+   ```
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Set up the dataset:
+   - Place the dataset (`udacity_ai_ethics_project_data.csv`) in the `data/` directory.
 
 ---
 
-## Dataset
-The dataset includes:
-- **Features:** Gender, Age, Education Level.
-- **Target Variable:** Budget in dollars (binary classification for budget >= $300 or not).
-- **Size:** ~300,000 records.
+## Usage
 
-Ensure the dataset is preprocessed before training models:
-- Handle missing values.
-- Normalize numerical features.
-- Encode categorical features.
-
----
-
-## Steps to Run the Project
-### 1. Clone Repository
-Clone the repository and navigate to the project directory.
-
-```bash
-git clone <repository_url>
-cd AI_Ethics_Budget_Prediction
-```
-
-### 2. Set Up Environment
-Create and activate a Python virtual environment:
-```bash
-python -m venv env
-source env/bin/activate # For Windows: env\Scripts\activate
-```
-
-### 3. Install Dependencies
-Install all necessary libraries using `pip`:
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run Jupyter Notebook
-Launch Jupyter Notebook and execute the `BudgetPrediction.ipynb` file:
-```bash
-jupyter notebook BudgetPrediction.ipynb
-```
+1. **Preprocess the dataset**:
+   ```
+   python preprocess.py
+   ```
+2. **Train models**:
+   ```
+   python train.py
+   ```
+3. **Evaluate fairness**:
+   ```
+   python fairness_analysis.py
+   ```
+4. **Visualize results**:
+   ```
+   python visualize.py
+   ```
 
 ---
 
-## Features
+## Results
 
-### 1. Model Training
-- **Decision Tree Classifier**
-- **Logistic Regression**
-- **Naive Bayes**
+- **Model Metrics**:
+  - Logistic Regression: Best Balanced Accuracy of 99.66%
+  - Gaussian Naive Bayes: Best Balanced Accuracy of 99.37%
+- **Fairness Metrics**:
+  - Statistical Parity Difference: ~-0.98
+  - Disparate Impact: ~0.01
 
-### 2. Fairness Metrics
-- Statistical Parity Difference (SPD)
-- Disparate Impact (DI)
-
-### 3. Bias Mitigation
-- Post-processing technique: Reject Option Classification using AIF360.
-
-### 4. Visualizations
-- Confusion Matrix.
-- Performance Cohort Analysis.
-- Feature Importance Plot.
-
-### 5. Ethical AI Considerations
-- Identification of bias in data.
-- Explanation of model predictions.
-- Caveats and recommendations for improvement.
+Both models achieve high accuracy but show biases, particularly in education-based predictions. Strategies to mitigate bias are incorporated in the analysis.
 
 ---
 
-## Outputs
-- **Visualizations:** Confusion matrix, bias metrics, feature importance, and cohort analysis.
-- **Metrics Report:** Model performance metrics and fairness evaluation.
-- **HTML Report:** Comprehensive summary of findings with plots.
+## Ethical Considerations
 
-
-## Limitations
-- The dataset may not fully represent all demographic groups.
-- Models may show a slight preference toward privileged groups.
+- **Fairness**: Bias in demographic groups is addressed through data preprocessing and fairness-aware training.
+- **Privacy**: User data is processed securely, and only essential attributes are used.
+- **Transparency**: Interpretability tools like LIME provide insights into model predictions.
 
 ---
 
-## Recommendations
-- Regularly monitor fairness metrics in production.
-- Collect additional data to enhance inclusiveness.
-- Explore hybrid bias mitigation techniques for better performance.
+## Future Work
+
+- **Enhanced Fairness**: Implement advanced bias-mitigation techniques.
+- **Real-world Testing**: Validate the model using real-world datasets.
+- **User Feedback**: Incorporate user feedback mechanisms to improve predictions and fairness.
 
 ---
-
-For questions or feedback, contact us at [ejfury@protonmail.com].
