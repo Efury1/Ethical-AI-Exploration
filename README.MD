@@ -8,7 +8,7 @@ This project involves designing a machine learning model to predict user budgets
 
 The project emphasizes fairness and ethical AI practices by exploring biases in demographic attributes like gender, age, and education level. Using tools like the IBM AIF360 library, fairness metrics are evaluated to address potential biases in the model's predictions.
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/z197Kxx"  ><a href="//imgur.com/a/z197Kxx"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+https://imgur.com/s3eWu0c
 ---
 
 ## Features
