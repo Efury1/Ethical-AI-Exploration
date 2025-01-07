@@ -1,6 +1,7 @@
 
 
 # AI Ethics Project: IDOOU Activity Recommender
+Author: Eliza Fury
 
 ## Overview
 
